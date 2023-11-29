@@ -67,7 +67,7 @@ void loop() {
     delay(DEFAULT_DELAY_MS);
     digitalWrite(PIN_RED_LED, LOW); 
 
-    Blink yellow led
+    //Blink yellow led
     digitalWrite(PIN_YELLOW_LED, HIGH);
     delay(DEFAULT_DELAY_MS);
     digitalWrite(PIN_YELLOW_LED, LOW); 
