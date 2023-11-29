@@ -6,10 +6,14 @@
 #define PIN_MAX72_LOAD 10
 #define MAX72_NB_DEVICES 2
 
+LedControl lc = LedControl(PIN_MAX72_DATA_IN,PIN_MAX72_CLK,PIN_MAX72_LOAD,MAX72_NB_DEVICES);
+
 //Yellow led (TAU)
 #define PIN_YELLOW_LED 7
+
 //Red led (DELTA)
 #define PIN_RED_LED 6
+
 //Green led (ZETA)
 #define PIN_GREEN_LED 5
 
@@ -19,11 +23,8 @@
 //Global led configuration
 #define DEFAULT_INTENSITY_LED 8
 
-
 //Debug configuration
 #define DEFAULT_DELAY_MS 1000
-
-LedControl lc = LedControl(PIN_MAX72_DATA_IN,PIN_MAX72_CLK,PIN_MAX72_LOAD,MAX72_NB_DEVICES);
 
 void setup() {
     pinMode(PIN_GREEN_LED, OUTPUT);
@@ -41,21 +42,26 @@ void setup() {
 }
 
 void loop() {
-   //7 segment displays HH:MM:SS
+    //Blink red colons
+    digitalWrite(PIN_RED_COLONS_LED, HIGH);
+    delay(DEFAULT_DELAY_MS);
+    digitalWrite(PIN_RED_COLONS_LED, LOW);
+
+   //Display digits on 7 segment displays
    for (int i = 0; i <= 9; i++) {
+      //7 segment displays HH:MM:SS
       lc.setChar(0,0,i,false);
       lc.setChar(0,1,i,false);
       lc.setChar(0,2,i,false);
       lc.setChar(0,3,i,false);
       lc.setChar(0,4,i,false);
-      lc.setChar(0,5,i,false);   
+      lc.setChar(0,5,i,false);
+      //7 segment displays days
+      lc.setChar(1,2,i,false);
+      lc.setChar(1,3,i,false);
+      lc.setChar(1,4,i,false);    
       delay(DEFAULT_DELAY_MS);
     }
-    
-    //Blink red colons
-    digitalWrite(PIN_RED_COLONS_LED, HIGH);
-    delay(DEFAULT_DELAY_MS);
-    digitalWrite(PIN_RED_COLONS_LED, LOW);
     
     //Blink green led
     digitalWrite(PIN_GREEN_LED, HIGH);
@@ -71,7 +77,8 @@ void loop() {
     digitalWrite(PIN_YELLOW_LED, HIGH);
     delay(DEFAULT_DELAY_MS);
     digitalWrite(PIN_YELLOW_LED, LOW); 
-
+    
+    //Bar graphs
     //A
     lc.setRow(1,0,B01000000);
     lc.setRow(1,1,B01000000);
