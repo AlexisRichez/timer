@@ -1,5 +1,7 @@
 #include "LedControl.h"
 
+//Source for specs : https://www.therpf.com/forums/threads/how-to-build-sliders-timer-electronics.104308/
+
 // MAX7219 configuration
 #define PIN_MAX72_DATA_IN 12
 #define PIN_MAX72_CLK 11
@@ -24,7 +26,7 @@
 #define BLINK_INTERVAL 600 // Blink interval in milliseconds
 #define BLINK_DELAY 200 // Blink interval in milliseconds
 #define TIMER_INTERVAL 100  // Timer interval in milliseconds
-#define BARGRAPH_INTERVAL 200 // Bar graph interval in milliseconds
+#define BARGRAPH_INTERVAL 250 // Bar graph interval in milliseconds
 
 LedControl lc = LedControl(PIN_MAX72_DATA_IN, PIN_MAX72_CLK, PIN_MAX72_LOAD, MAX72_NB_DEVICES);
 
@@ -35,6 +37,7 @@ unsigned long previousBarGraphMillis = 0;
 //Timer management
 unsigned long totalsectime = 0;
 bool firstLoop = true;
+bool nextLoop = false;
 
 void setup()
 {
@@ -59,14 +62,19 @@ void setup()
     lc.setIntensity(address, DEFAULT_INTENSITY_LED);
     lc.setScanLimit(address, 8);
   }
+  setNextLoop();
+}
 
-  //
+void setNextLoop()
+{
   totalsectime = random(16756131);   //random
-  totalsectime = 60;   //fixed 10 days
+  totalsectime = random(10, 3600);
+  //totalsectime = 20; 
+  nextLoop = true;
 }
 
 //Blink TAU, DELTA, ZETA leds
-void blinktdz()
+void blinkTDZ()
 {
   unsigned long currentMillis = millis();
   if (currentMillis - previousBlinkMillis >= BLINK_INTERVAL)
@@ -122,11 +130,16 @@ void timer()
   lc.setDigit(0, 4, seconds / 10, false); // Display tens digit of seconds
   lc.setDigit(0, 5, seconds % 10, false); // Display ones digit of seconds
 
+  if(totalsectime <= 0)
+  {
+    setNextLoop();
+  }
+    
 }
 
 void bargraph()
 {
-  static byte pattern = B10000111; // Initial pattern
+  static byte pattern = B10000000; // Initial pattern
   unsigned long currentMillis = millis();
   if (currentMillis - previousBarGraphMillis >= BARGRAPH_INTERVAL)
   {
@@ -391,12 +404,16 @@ void loop()
   while (firstLoop) {
     buzzer();
     genserOne();
-    displayWrap();
-    bargraph();
     firstLoop = false;
     break;
   }
-  blinktdz();
+  while (nextLoop) {
+    displayWrap(); 
+    nextLoop = false;
+    break;
+  }
+  bargraph();
+  blinkTDZ();
   timer();
   //loopHHMMSS();
 }
