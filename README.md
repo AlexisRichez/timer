@@ -1,5 +1,8 @@
-# timer
-Just a sliders timer<br/>
+# Sliders timer
+## Introduction
+Just a Sliders timer<br/>
+## PCB
+Size : 150mm x 37mm
 ## Components
 ### 7 segment led digit 0.3 inch
 ![Alt text](./04%20-%20schematics/led_digit_0_3_inch_1.png "Led digit 0.3 inch schematics 1")<br/>
