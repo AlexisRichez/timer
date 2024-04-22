@@ -1,4 +1,5 @@
 #include "LedControl.h"
+#include "OneButton.h"
 
 //Source for specs : https://www.therpf.com/forums/threads/how-to-build-sliders-timer-electronics.104308/
 
@@ -11,7 +12,18 @@
 // Global led configuration
 #define DEFAULT_INTENSITY_LED 5
 
+//Buttons
+#define BTN_1 A0
+#define BTN_2 A1
+#define BTN_3 A2
+#define BTN_4 A3
+#define BTN_5 A4
+#define BTN_6 A5
+
 #define PIN_BUZZER 4
+
+//Red led (Between HH, MM, SS)
+#define PIN_RED_COLONS_LED 13
 
 // Yellow led (TAU)
 #define PIN_YELLOW_LED 7
@@ -21,6 +33,9 @@
 
 // Green led (ZETA)
 #define PIN_GREEN_LED 5
+
+//White led (Top)
+#define PIN_WHITE_COLONS_LED 3
 
 // Debug configuration
 #define BLINK_INTERVAL 600 // Blink interval in milliseconds
@@ -48,10 +63,22 @@ void setup()
   //Buzzer
   pinMode(PIN_BUZZER, OUTPUT);
 
+  pinMode(PIN_RED_COLONS_LED, OUTPUT);
+
+  pinMode(PIN_WHITE_COLONS_LED, OUTPUT);
+
   //TAU, DELTA, ZETA
   pinMode(PIN_GREEN_LED, OUTPUT);
   pinMode(PIN_RED_LED, OUTPUT);
   pinMode(PIN_YELLOW_LED, OUTPUT);
+
+  //Buttons
+  pinMode(BTN_1, INPUT_PULLUP);
+  pinMode(BTN_2, INPUT_PULLUP);
+  pinMode(BTN_3, INPUT_PULLUP);
+  pinMode(BTN_4, INPUT_PULLUP);
+  pinMode(BTN_5, INPUT_PULLUP);
+  pinMode(BTN_6, INPUT_PULLUP);
 
   //Two MAX7219 initialisation
   int devices = lc.getDeviceCount();
@@ -68,7 +95,7 @@ void setup()
 void setNextLoop()
 {
   totalsectime = random(16756131);   //random
-  totalsectime = random(10, 3600);
+  //totalsectime = random(10, 3600);
   //totalsectime = 20; 
   nextLoop = true;
 }
@@ -144,6 +171,7 @@ void bargraph()
   if (currentMillis - previousBarGraphMillis >= BARGRAPH_INTERVAL)
   {
     previousBarGraphMillis = currentMillis;
+    lc.setRow(1, 0, pattern); // Set the current 
     lc.setRow(1, 1, pattern); // Set the current pattern
     pattern = pattern << 1 | (pattern & B10000000 ? 1 : 0); // Shift the pattern to the left, maintaining the last bit
   }
@@ -401,6 +429,32 @@ void genserOne() {
 
 void loop()
 {
+
+  //Blink red colons
+  digitalWrite(PIN_RED_COLONS_LED, HIGH);
+  
+  digitalWrite(PIN_WHITE_COLONS_LED, HIGH);
+
+  //Buttons click
+  if (digitalRead(BTN_1) == false) {
+      tone(PIN_BUZZER, 5500, 100);
+  }
+  if (digitalRead(BTN_2) == false) {
+      tone(PIN_BUZZER, 5500, 100);
+  }
+  if (digitalRead(BTN_3) == false) {
+      tone(PIN_BUZZER, 5500, 100);
+  }
+  if (digitalRead(BTN_4) == false) {
+      tone(PIN_BUZZER, 5500, 100);
+  }
+  if (digitalRead(BTN_5) == false) {
+      tone(PIN_BUZZER, 5500, 100);
+  }
+  if (digitalRead(BTN_6) == false) {
+      tone(PIN_BUZZER, 5500, 100);
+  }
+  
   while (firstLoop) {
     buzzer();
     genserOne();
