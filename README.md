@@ -1,6 +1,8 @@
 # Sliders timer
 ## Introduction
 Just a Sliders timer<br/>
+## Schematics
+![SVG Image](./04%20-%20schematics/00_proteus_timer_schematics.SVG)
 ## PCB
 Size : 150mm x 37mm
 ## Components
