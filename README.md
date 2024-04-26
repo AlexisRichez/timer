@@ -19,3 +19,5 @@ Size : 150mm x 37mm
 ![Alt text](./04%20-%20schematics/led_digit_0_3_inch_2.png "Led digit 0.3 inch schematics 2")
 
 ### 7 segment led digit 0.36 inch
+
+### Potentiometer 10k
