@@ -21,3 +21,5 @@ Size : 150mm x 37mm
 ### 7 segment led digit 0.36 inch
 
 ### Potentiometer 10k
+
+### NeoPixel Led Ring (12 leds)
