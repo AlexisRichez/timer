@@ -6,14 +6,14 @@ Just a Sliders timer<br/>
 ## PCB
 Size : 150mm x 37mm
 ## Components
-### 7 segment red led digit 0.36 inch cathode (HH:MM:SS)
+### 7 segment red led digit - 0.36 inch cathode (HH:MM:SS)
 
 | Dimension | Measurement (mm) |
 |-----------|------------------|
 | Length    | 14.00            |
 | Width     | 7.40             |
 | Height    | 7.20             |
-### 7 segment red led digit 0.3 inch cathode (DDD)
+### 7 segment red led digit - 0.3 inch cathode (DDD)
 | Dimension | Measurement (mm) |
 |-----------|------------------|
 | Length    | 12.70            |
@@ -25,13 +25,13 @@ Size : 150mm x 37mm
 | Length    | 25.40            |
 | Width     | 10.10             |
 | Height    | 7.90             |
-### yellow, red, green leds (TAU, DELTA, ZETA)
+### Yellow, red, green leds (TAU, DELTA, ZETA)
 | Dimension | Measurement (mm) |
 |-----------|------------------|
 | Length    | 5.00            |
 | Width     | 2.00             |
 | Height    | 7.00             |
-### red leds (between HH:MM:SS)
+### Red leds (between HH:MM:SS)
 | Dimension | Measurement (mm) |
 |-----------|------------------|
 | Length    | 3.00            |
