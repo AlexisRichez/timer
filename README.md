@@ -6,19 +6,19 @@ Just a Sliders timer<br/>
 ## PCB
 Size : 150mm x 37mm
 ## Components
-### 7 segment led digit 0.36 inch
+### 7 segment led red digit 0.36 inch cathode
 | Dimension | Measurement (mm) |
 |-----------|------------------|
 | Length    | 14.00            |
 | Width     | 7.40             |
 | Height    | 7.20             |
-### 7 segment led digit 0.3 inch
+### 7 segment led red digit 0.3 inch cathode
 | Dimension | Measurement (mm) |
 |-----------|------------------|
 | Length    | 12.70            |
 | Width     | 7.60             |
 | Height    | 7.00             |
-### 10 leds bargraph
+### 10 green leds bargraph
 | Dimension | Measurement (mm) |
 |-----------|------------------|
 | Length    | 25.40            |
