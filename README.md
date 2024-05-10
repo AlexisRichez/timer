@@ -6,13 +6,14 @@ Just a Sliders timer<br/>
 ## PCB
 Size : 150mm x 37mm
 ## Components
-### 7 segment red led digit 0.36 inch cathode
+### 7 segment red led digit 0.36 inch cathode (HH:MM:SS)
+
 | Dimension | Measurement (mm) |
 |-----------|------------------|
 | Length    | 14.00            |
 | Width     | 7.40             |
 | Height    | 7.20             |
-### 7 segment red led digit 0.3 inch cathode
+### 7 segment red led digit 0.3 inch cathode (DDD)
 | Dimension | Measurement (mm) |
 |-----------|------------------|
 | Length    | 12.70            |
@@ -24,12 +25,18 @@ Size : 150mm x 37mm
 | Length    | 25.40            |
 | Width     | 10.10             |
 | Height    | 7.90             |
-
-<img src="./04%20-%20schematics/7_segment_display_with_labeled_segments.svg" alt="7 segment display with labeled segments" style="width: 15%;">
-
-![Alt text](./04%20-%20schematics/led_digit_0_3_inch_1.png "Led digit 0.3 inch schematics 1")<br/>
-![Alt text](./04%20-%20schematics/led_digit_0_3_inch_2.png "Led digit 0.3 inch schematics 2")
-
+### yellow, red, green leds (TAU, DELTA, ZETA)
+| Dimension | Measurement (mm) |
+|-----------|------------------|
+| Length    | 5.00            |
+| Width     | 2.00             |
+| Height    | 7.00             |
+### red leds (between HH:MM:SS)
+| Dimension | Measurement (mm) |
+|-----------|------------------|
+| Length    | 3.00            |
+| Width     | 2.00             |
+| Height    | 4.00             |
 ### Potentiometer 10k
 
 ### NeoPixel Led Ring (12 leds)
