@@ -6,6 +6,12 @@ Just a Sliders timer<br/>
 ## PCB
 Size : 150mm x 37mm
 ## Components
+### 7 segment led digit 0.6 inch
+| Dimension | Measurement (mm) |
+|-----------|------------------|
+| Length    | 14.00            |
+| Width     | 7.40             |
+| Height    | 7.20             |
 ### 7 segment led digit 0.3 inch
 | Dimension | Measurement (mm) |
 |-----------|------------------|
