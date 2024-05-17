@@ -1,4 +1,6 @@
-# Sliders timer
+# Sliders Timer
+<img src="./04%20-%20schematics/v2%20-%20Timer%20-%20Assembly.png">
+
 ## Introduction
 Just a Sliders timer<br/>
 ## Schematics
