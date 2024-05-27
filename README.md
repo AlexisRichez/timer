@@ -6,7 +6,7 @@ Just a Sliders timer<br/>
 ## Schematics
 ![SVG Image](./04%20-%20schematics/00_proteus_timer_schematics.SVG)
 ## PCB
-Size : 150mm x 37mm
+Size : 137mm x 50mm
 ## Components
 ### 7 segment red led digit - 0.36 inch cathode (HH:MM:SS)
 
