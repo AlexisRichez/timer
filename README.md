@@ -43,6 +43,13 @@ graph TD;
     B-->D;
     C-->D;
 ```
+
+## 3D models
+### Main body
+### Battery box
+### Buttons plate
+### Top plate
+
 ### Testing points
 
 ## Sources
