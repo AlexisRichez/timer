@@ -18,6 +18,7 @@ Size : 137mm x 50mm
 ### Bill of materials
 
 ### Component Dimensions
+> Note: These are the dimensions used for the project.
 
 | Component                                             | Length (mm) | Width (mm) | Height (mm) |
 |-------------------------------------------------------|-------------|------------|-------------|
@@ -27,7 +28,5 @@ Size : 137mm x 50mm
 | **Yellow, red, green LEDs (TAU, DELTA, ZETA)**             | 5.00        | 2.00       | 7.00        |
 | **Red LEDs (between HH:MM:SS)**                            | 3.00        | 2.00       | 4.00        |
 | **Potentiometer 10k**                                      | -           | -          | -           |
-
-> Note: The potentiometer dimensions are not specified.
 
 ### Testing points
