@@ -6,7 +6,8 @@
 2. [Schematics](#schematics)
 3. [PCB](#pcb)
 4. [Hardware](#hardware)
-5. [Testing Points](#testing-points)
+5. [Sources](#sources)
+6. [Remaining tasks](#remaining-tasks]
 
 ## Introduction
 Sliders is a 1995 sci-fi television series that follows Quinn Mallory, a young genius who invents a device called the "Timer" that allows him and a small group of friends—Wade, Rembrandt, and Professor Arturo—to travel between parallel universes. Each universe presents a different version of Earth with unique cultures, histories, and technologies. The group "slides" from one world to the next, searching for their way back home while facing various challenges along the way.
@@ -35,7 +36,7 @@ Size : 137mm x 50mm
 ### Testing points
 
 ## Sources
-+ [[GitHub Pages](https://www.therpf.com/forums/threads/how-to-build-sliders-timer-electronics.104308/)]([https://pages.github.com/](https://www.therpf.com/forums/threads/how-to-build-sliders-timer-electronics.104308/))
++ [https://www.therpf.com/forums/threads/how-to-build-sliders-timer-electronics.104308/](https://www.therpf.com/forums/threads/how-to-build-sliders-timer-electronics.104308/)
 
 ## Remaining tasks
 [ ] Make a big party :tada:
