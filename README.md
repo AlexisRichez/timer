@@ -33,17 +33,6 @@ Size : 137mm x 50mm
 | Red LEDs (between HH:MM:SS)                            | 3.00        | 2.00       | 4.00        |
 | Potentiometer 10k                                      | -           | -          | -           |
 
-## Program
-Here is a simple flow chart:
-
-```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
-```
-
 ## 3D models
 ### Main body
 ### Battery box
