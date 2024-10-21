@@ -33,3 +33,9 @@ Size : 137mm x 50mm
 | **Potentiometer 10k**                                      | -           | -          | -           |
 
 ### Testing points
+
+## Sources
++ [[GitHub Pages](https://www.therpf.com/forums/threads/how-to-build-sliders-timer-electronics.104308/)]([https://pages.github.com/](https://www.therpf.com/forums/threads/how-to-build-sliders-timer-electronics.104308/))
+
+## Remaining tasks
+[ ] Make a big party :tada:
