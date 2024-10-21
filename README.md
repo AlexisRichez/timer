@@ -26,12 +26,12 @@ Size : 137mm x 50mm
 
 | Component                                             | Length (mm) | Width (mm) | Height (mm) |
 |-------------------------------------------------------|-------------|------------|-------------|
-| **7 segment red LED digit - 0.36 inch cathode (HH:MM:SS)** | 14.00       | 7.40       | 7.20        |
-| **7 segment red LED digit - 0.3 inch cathode (DDD)**       | 12.70       | 7.60       | 7.00        |
-| **10 green LEDs bargraph**                                 | 25.40       | 10.10      | 7.90        |
-| **Yellow, red, green LEDs (TAU, DELTA, ZETA)**             | 5.00        | 2.00       | 7.00        |
-| **Red LEDs (between HH:MM:SS)**                            | 3.00        | 2.00       | 4.00        |
-| **Potentiometer 10k**                                      | -           | -          | -           |
+| 7 segment red LED digit - 0.36 inch cathode (HH:MM:SS) | 14.00       | 7.40       | 7.20        |
+| 7 segment red LED digit - 0.3 inch cathode (DDD)       | 12.70       | 7.60       | 7.00        |
+| 10 green LEDs bargraph                                 | 25.40       | 10.10      | 7.90        |
+| Yellow, red, green LEDs (TAU, DELTA, ZETA)             | 5.00        | 2.00       | 7.00        |
+| Red LEDs (between HH:MM:SS)                            | 3.00        | 2.00       | 4.00        |
+| Potentiometer 10k                                      | -           | -          | -           |
 
 ### Testing points
 
