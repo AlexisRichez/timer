@@ -44,3 +44,4 @@ Size : 137mm x 50mm
 | Height    | 4.00             |
 #### Potentiometer 10k
 
+### Testing points
