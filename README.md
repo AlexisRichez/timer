@@ -1,6 +1,13 @@
 # Sliders Timer
 <img src="./04%20-%20schematics/v2%20-%20Timer%20-%20Assembly.png">
 
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Schematics](#schematics)
+3. [PCB](#pcb)
+4. [Hardware](#hardware)
+5. [Testing Points](#testing-points)
+
 ## Introduction
 Just a Sliders timer<br/>
 ## Schematics
