@@ -1,7 +1,5 @@
 <img src="./sliders_logo.png">
 
-# Sliders Timer Project
-
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Schematics](#schematics)
