@@ -1,5 +1,5 @@
 # Sliders Timer
-<img src="./04%20-%20schematics/v2%20-%20Timer%20-%20Assembly.png">
+<img src="./sliders_logo.png">
 
 ## Table of Contents
 1. [Introduction](#introduction)
