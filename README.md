@@ -1,4 +1,4 @@
-# Sliders Timer
+# Sliders Timer Project
 <img src="./sliders_logo.png">
 
 ## Table of Contents
