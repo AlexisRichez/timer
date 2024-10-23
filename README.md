@@ -16,6 +16,8 @@ The "Timer" is a handheld device that controls the sliding process, dictating ho
 ## Schematics
 ![SVG Image](./04%20-%20schematics/00_proteus_timer_schematics.SVG)
 ## PCB
+> Note: By adhering to the PCB size and component placements, you will be able to upgrade or integrate your own PCB without making any changes to the 3D models.
+
 Size : 137mm x 50mm
 ## Hardware
 ### Bill of materials
