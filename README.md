@@ -13,8 +13,6 @@ Sliders is a 1995 sci-fi television series that follows Quinn Mallory, a young g
 
 The "Timer" is a handheld device that controls the sliding process, dictating how long the group must stay in each universe before they can slide again. It opens a wormhole at set intervals, and if the group misses their window, they are stranded in the current universe. The Timer becomes central to the story, especially when it malfunctions or is damaged, leading to unpredictable slides or dangerous situations.
 
-My project is built with the goal of being fully open source, which means that all of my source code, 3D models, and vector files are made available to you. I believe in empowering my users by giving you the freedom to access, modify, and improve the project according to your needs.
-
 ### This is Open Source ! What does this mean for you?
 <b>Source Code:</b> You can download and modify the entire source code to suit your requirements. Whether you want to fix a bug, add new features, or create your own version, the choice is yours!
 
