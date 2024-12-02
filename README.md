@@ -11,7 +11,7 @@
 ## Introduction
 Sliders is a 1995 sci-fi television series that follows Quinn Mallory, a young genius who invents a device called the "Timer" that allows him and a small group of friends—Wade, Rembrandt, and Professor Arturo—to travel between parallel universes. Each universe presents a different version of Earth with unique cultures, histories, and technologies. The group "slides" from one world to the next, searching for their way back home while facing various challenges along the way.
 
-The "Timer" is a handheld device that controls the sliding process, dictating how long the group must stay in each universe before they can slide again. It opens a wormhole at set intervals, and if the group misses their window, they are stranded in the current universe. The Timer becomes central to the story, especially when it malfunctions or is damaged, leading to unpredictable slides or dangerous situations.
+The "Timer" is a handheld device that controls the sliding process, dictating how long the group must stay in each universe before they can slide again. It opens a wormhole :cyclone: at set intervals, and if the group misses their window, they are stranded in the current universe. The Timer becomes central to the story, especially when it malfunctions or is damaged, leading to unpredictable slides or dangerous situations.
 
 ### This is Open Source ! What does this mean for you?
 <b>Source Code:</b> You can download and modify the entire source code to suit your requirements. Whether you want to fix a bug, add new features, or create your own version, the choice is yours!
