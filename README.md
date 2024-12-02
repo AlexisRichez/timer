@@ -74,7 +74,7 @@ Size : 137mm x 50mm
 ## Remaining tasks
 [ ] Make a big party :tada:
 
-## Pictures
+## Pictures :camera:
 <div style="float:left">
 <img src="img/001.jpg" width="150" height="150">
 <img src="img/002.jpg" width="150" height="150">
