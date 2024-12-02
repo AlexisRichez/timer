@@ -53,8 +53,6 @@ Size : 137mm x 50mm
 ### Buttons plate
 ### Top plate
 
-### Testing points
-
 ## Sources
 + [https://www.therpf.com/forums/threads/how-to-build-sliders-timer-electronics.104308/](https://www.therpf.com/forums/threads/how-to-build-sliders-timer-electronics.104308/)
 
