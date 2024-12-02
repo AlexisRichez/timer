@@ -79,6 +79,9 @@ Size : 137mm x 50mm
 <div style="float:left">
 <img src="img/001.jpg" width="150" height="150">
 <img src="img/002.jpg" width="150" height="150">
+<img src="img/003.jpg" width="150" height="150">
+<img src="img/004.jpg" width="150" height="150">
+<img src="img/005.jpg" width="150" height="150">
 <img src="img/010.jpg" width="150" height="150">
 <img src="img/020.jpg" width="150" height="150">
 </div>
