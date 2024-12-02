@@ -21,32 +21,19 @@ The "Timer" is a handheld device that controls the sliding process, dictating ho
 Size : 137mm x 50mm
 ## Hardware
 ### Bill of materials
-| Component                                             | Length (mm) |
+| Component                                             | Link |
 |-------------------------------------------------------|-------------|
-| 7 segment red LED digit - 0.36 inch cathode (HH:MM:SS) | 14.00       |
-| 7 segment red LED digit - 0.3 inch cathode (DDD)       | 12.70       |
-| 10 green LEDs bargraph                                 | 25.40       |
-| Yellow, red, green LEDs (TAU, DELTA, ZETA)             | 5.00        |
-| Red LEDs (between HH:MM:SS)                            | 3.00        |
-| Potentiometer 10k                                      | -           |
+| 7 segment red LED digit - 0.36 inch cathode (HH:MM:SS) | https://fr.aliexpress.com/item/1005002680227414.html |
+| 7 segment red LED digit - 0.3 inch cathode (DDD)       | https://fr.aliexpress.com/item/32726538415.html |
+| 10 green LEDs bargraph                                 | https://fr.aliexpress.com/item/1005006697608767.html      |
+| Yellow, red, green LEDs (TAU, DELTA, ZETA)             | https://fr.aliexpress.com/item/1005005678632501.html |
+| Red LEDs (between HH:MM:SS)                            | https://fr.aliexpress.com/item/1005005678632501.html |
+| Light LEDs (top laser) | https://fr.aliexpress.com/item/32468733055.html |
+| Buzzer | https://fr.aliexpress.com/item/1005006209077202.html |
+| Potentiometer 10k                                      | https://fr.aliexpress.com/item/1005005671238738.html |
 | Red acrylic sheets                                     | [https://fr.aliexpress.com/item/4000283087852.html](https://fr.aliexpress.com/item/4000283087852.html) |
 | Translucent acrylic sheets                                     | [https://fr.aliexpress.com/item/4000283087852.html](https://fr.aliexpress.com/item/1005004925861639.html) |
 | Arduino Nano V3 | [https://www.amazon.fr/dp/B0722YYBSS](https://www.amazon.fr/dp/B0722YYBSS) |
-
-https://fr.aliexpress.com/item/32726538415.html?spm=a2g0o.order_list.order_list_main.57.52785e5bw4mb33&gatewayAdapt=glo2fra
-https://fr.aliexpress.com/item/1005002680227414.html?spm=a2g0o.order_list.order_list_main.67.52785e5bw4mb33&gatewayAdapt=glo2fra
-
-https://fr.aliexpress.com/item/1005006697608767.html?spm=a2g0o.order_list.order_list_main.62.52785e5bw4mb33&gatewayAdapt=glo2fra
-
-https://fr.aliexpress.com/item/32468733055.html?spm=a2g0o.order_list.order_list_main.47.52785e5bw4mb33&gatewayAdapt=glo2fra
-https://fr.aliexpress.com/item/1005002680227414.html?spm=a2g0o.order_list.order_list_main.52.52785e5bw4mb33&gatewayAdapt=glo2fra
-
-https://fr.aliexpress.com/item/1005005671238738.html?spm=a2g0o.order_list.order_list_main.77.52785e5bw4mb33&gatewayAdapt=glo2fra
-https://fr.aliexpress.com/item/1005006209077202.html?spm=a2g0o.order_list.order_list_main.92.52785e5bw4mb33&gatewayAdapt=glo2fra
-
-https://fr.aliexpress.com/item/1005005678632501.html?spm=a2g0o.order_list.order_list_main.96.52785e5bw4mb33&gatewayAdapt=glo2fra
-
-
 
 ### Component Dimensions
 > Note: These are the dimensions used for the project.
