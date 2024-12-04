@@ -71,6 +71,7 @@ Size : 137mm x 50mm
 
 ## Sources
 + [https://www.therpf.com/forums/threads/how-to-build-sliders-timer-electronics.104308/](https://www.therpf.com/forums/threads/how-to-build-sliders-timer-electronics.104308/)
++ https://github.com/kenny-caldieraro/Sliders-timer-replica
 
 ## Remaining tasks
 [ ] Make a big party :tada:
