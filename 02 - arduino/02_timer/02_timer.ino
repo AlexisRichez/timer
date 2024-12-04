@@ -96,6 +96,7 @@ long editModeDays = 0;
 bool powerOn = false;
 bool isTimerOn = false;
 bool countdownEndTriggered = false;
+bool isTimerSleepMode = false;
 
 //Options
 const bool buzzerActivated = true;
@@ -267,6 +268,13 @@ void blinkZETA()
 //Blink TAU, DELTA, ZETA leds
 void blinkTDZ()
 {
+  if(isTimerSleepMode)
+  {
+    digitalWrite(PIN_YELLOW_LED, LOW);
+    digitalWrite(PIN_RED_LED, LOW);
+    digitalWrite(PIN_GREEN_LED, LOW);
+    return;
+  }
   blinkTAU();
   blinkDELTA();
   blinkZETA();
@@ -279,6 +287,12 @@ void blinkEditMode()
   if (currentMillis - previousBlinkEditModeMillis >= previousBlinkEditModeInterval)
   {
     previousBlinkEditModeMillis = currentMillis;
+
+    if(isTimerSleepMode)
+    {
+      return;
+    }
+    
     if (editMode) {
       if (editModeCurrent == 4)
       {
@@ -352,6 +366,20 @@ void refreshTimer()
     int hours = (totalsectime % 86400) / 3600;// Calculate hours from the remaining seconds after days
     int minutes = (totalsectime % 3600) / 60; // Calculate minutes from the remaining seconds after hours
     int seconds = totalsectime % 60; // Calculate seconds from the remaining seconds
+
+    if(isTimerSleepMode)
+    {
+      lc.setRow(1, 2, B00000000);
+      lc.setRow(1, 3, B00000000);
+      lc.setRow(1, 4, B00000000);
+      lc.setRow(0, 0, B00000000);
+      lc.setRow(0, 1, B00000000);          
+      lc.setRow(0, 2, B00000000);
+      lc.setRow(0, 3, B00000000);
+      lc.setRow(0, 4, B00000000);
+      lc.setRow(0, 5, B00000000);
+      return;
+    }
   
     days = min(days, 999);
   
@@ -443,9 +471,14 @@ void bargraph()
 
     // Display the current pattern from the array
     byte pattern = bargraph_patterns[bargraphPatternIndex];
-    lc.setRow(1, 0, pattern); // Set the current pattern for row 0
-    lc.setRow(1, 1, pattern); // Set the current pattern for row 1
-
+    if(isTimerSleepMode)
+    {
+      lc.setRow(1, 0, B00000000);
+      lc.setRow(1, 1, B00000000);
+    } else {
+      lc.setRow(1, 0, pattern);
+      lc.setRow(1, 1, pattern);
+    }
     // Update the patternIndex to cycle through the patterns
     bargraphPatternIndex++;
     if (bargraphPatternIndex >= BARGRAPH_NUM_PATTERNS) {
@@ -823,10 +856,13 @@ void clickBtnPowerAction()
 {
   Serial.println("clickBtnPowerAction");
   tone(PIN_BUZZER, 5500, 100);
-  if(isTimerOn)
+
+  if(editMode)
   {
     return;
   }
+  
+  isTimerSleepMode = !isTimerSleepMode;
 }
 
 //Click on FCN button
@@ -890,7 +926,7 @@ void clickBtnEndAction()
 //Open vortex (not IRL :)) sequence
 void slideOpenVortex()
 {
-  isTimerOn = false;
+  isTimerOn = false;  
   activateRedColumnsLeds();
   activateSlideLights();
   //Vortex in opened for 30 seconds
