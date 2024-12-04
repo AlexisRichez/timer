@@ -28,17 +28,27 @@ int Pot;
 
 //Red led columns (Between HH, MM, SS)
 #define PIN_RED_COLONS_LED 13
-long blinkRedColumnsIntervalDefault = 600;
+long blinkRedColumnsIntervalDefault = 500;
 long blinkRedColumnsInterval = blinkRedColumnsIntervalDefault;
 long previousBlinkRedColumnsMillis = 0;
+bool redColumnsStatus = false;
 
 // TAU, DELTA, ZETA
 #define PIN_YELLOW_LED 7
 #define PIN_RED_LED 6
 #define PIN_GREEN_LED 5
+bool tauStatus = false;
+bool deltaStatus = false;
+bool zetaStatus = false;
+unsigned long previousBlinkTauMillis = 0;
+unsigned long previousBlinkDeltaMillis = 0;
+unsigned long previousBlinkZetaMillis = 0;
 
 //Buttons
 const unsigned long debounceDelay = 50; // Debounce delay in milliseconds
+unsigned long lastDebounceTimes[6] = {0}; // Last debounce times for each button
+static bool lastButtonStates[6] = {HIGH, HIGH, HIGH, HIGH, HIGH, HIGH}; // Track previous button states
+static bool actionButtonExecuted[6] = {false}; // Track whether the action has been executed
 
 #define BTN_1 A0
 #define BTN_2 A1
@@ -47,24 +57,32 @@ const unsigned long debounceDelay = 50; // Debounce delay in milliseconds
 #define BTN_5 A4
 #define BTN_6 A5
 
-unsigned long lastDebounceTimes[6] = {0}; // Last debounce times for each button
-static bool lastButtonStates[6] = {HIGH, HIGH, HIGH, HIGH, HIGH, HIGH}; // Track previous button states
-static bool actionButtonExecuted[6] = {false}; // Track whether the action has been executed
+//Edit mode
+long previousBlinkEditModeMillis = 0;
+long previousBlinkEditModeInterval = 250;
+bool editModeBlinkStatus = false;
 
-// Debug configuration
-#define BLINK_TDZ_INTERVAL 600 // Blink interval in milliseconds
-#define BLINK_DELAY 200 // Blink interval in milliseconds
-#define TIMER_INTERVAL 100  // Timer interval in milliseconds
-#define BARGRAPH_INTERVAL 250 // Bar graph interval in milliseconds
-
-unsigned long previousBlinkMillis = 0;
-unsigned long previousTimerMillis = 0;
+//Bargraph
+byte bargraph_patterns[] = {
+  B00000000,
+  B10000000,
+  B10000001,
+  B10000011,
+  B10000111,
+  B10001111,
+  B10011111,
+  B10111111,
+  B11111111,
+  B10111111,
+  B10011111,B10001111,B10000111,B10000011,B10000001,B10000000
+  };
+#define BARGRAPH_INTERVAL 100 // Bar graph interval in milliseconds
+#define BARGRAPH_NUM_PATTERNS (sizeof(bargraph_patterns) / sizeof(bargraph_patterns[0]))
+byte bargraphPatternIndex = 0; // Index to track which pattern to show
 unsigned long previousBarGraphMillis = 0;
 
-//Options
-const bool buzzerActivated = true;
-
 //Timer management
+unsigned long previousTimerMillis = 0;
 unsigned long totalsectime = 0;
 bool firstLoop = true;
 bool nextLoop = false;
@@ -79,8 +97,15 @@ bool powerOn = false;
 bool isTimerOn = false;
 bool countdownEndTriggered = false;
 
+//Options
+const bool buzzerActivated = true;
+
 void setup()
 {
+  Serial.println("Sliders Timer System by ARZ");
+  Serial.println("===========================================");
+  Serial.println("Made with love in FRANCE");
+  
   Serial.begin(115200);
 
   randomSeed(analogRead(0)); // Seed the random number generator with an analog reading
@@ -122,81 +147,119 @@ void setup()
   }
 }
 
-//Reset everything specific to slide mode (X min before countdown end)
+//Deactivate slide mode : reset everything specific to slide mode (X min before countdown end)
 void deactivateSlideMode()
 {
-  blinkRedColumnsInterval = blinkRedColumnsIntervalDefault;
   deactivateSlideLights();
 }
 
+//Activate slide mode
 void activateSlideMode()
 {
-  blinkRedColumnsInterval = blinkRedColumnsIntervalDefault / 4;
   activateSlideLights();
 }
 
+//Define next random countdown
 void setNextRandCountdown()
 {
-  Serial.println("random countdown");
-  totalsectime = random(16756131);   //random
-  //totalsectime = random(30, 60);
-  //totalsectime = 30; 
+  Serial.println("Set next random countdown...");
+  //totalsectime = random(16756131);
+  totalsectime = random(600, 604800); //Random between 10 minutes and 7 days
+  Serial.println("Total time in seconds : " + totalsectime);
   countdownEndTriggered = false;
 }
 
-void powerLedRing()
-{
-  pixels.clear();
-  Pot = analogRead(A6); 
-  Serial.println(Pot);
-  
-  if (Pot == 0) {
-    pixels.clear();
-    pixels.show();
-  } else {
-    int nbLeds = map(Pot, 0, 1023, 1, 9);   
-    Serial.print(nbLeds);
-    
-    for(int i=0; i<nbLeds; i++) {   
-      pixels.setPixelColor(i, pixels.Color(128, 0, 0));
-      pixels.show();
-    }
-  }
-}
-
+//Deactivate slide lights
 void deactivateSlideLights()
 {
     digitalWrite(PIN_WHITE_COLONS_LED, LOW);
 }
 
+//Acticate slide lights
 void activateSlideLights()
 {
     digitalWrite(PIN_WHITE_COLONS_LED, HIGH);
 }
 
+//Activate red led columns
 void activateRedColumnsLeds()
 {
   digitalWrite(PIN_RED_COLONS_LED, HIGH);
 }
 
-//Blink 
+//Blink  red leds columns
 void blinkRedColumnsLeds()
 {
   unsigned long currentMillis = millis();
   if (currentMillis - previousBlinkRedColumnsMillis >= blinkRedColumnsInterval)
   {
     previousBlinkRedColumnsMillis = currentMillis;
+    blinkRedColumnsInterval = blinkRedColumnsIntervalDefault;
+    
+    //When 30 seconds or less are remaining, red leds and buzzer speeds up
+    if(totalsectime<=30)
+    {
+      blinkRedColumnsInterval = 150;
+    }
+
+    // Toggle the LED status
+    redColumnsStatus = !redColumnsStatus;
+    
     //Blink red colons
-    if(buzzerActivated)
+    if(redColumnsStatus && buzzerActivated && totalsectime<=60)
     {
       tone(PIN_BUZZER, 5500, 100);
     }
-    digitalWrite(PIN_RED_COLONS_LED, HIGH);
-    delay(blinkRedColumnsInterval);
-    digitalWrite(PIN_RED_COLONS_LED, LOW);
-    if(buzzerActivated)
-    {
-      noTone(PIN_BUZZER);
+    
+    // Update the LED output based on the status
+    digitalWrite(PIN_RED_COLONS_LED, redColumnsStatus ? HIGH : LOW);
+  }
+}
+
+//Blink TAU
+void blinkTAU()
+{
+  unsigned long currentMillis = millis();
+  if (currentMillis - previousBlinkTauMillis >= 250)
+  {
+    previousBlinkTauMillis = currentMillis;
+    if((totalsectime >= 15 && totalsectime <= 35)) {
+      digitalWrite(PIN_YELLOW_LED, HIGH);
+    } else {
+      tauStatus = !tauStatus;
+      digitalWrite(PIN_YELLOW_LED, tauStatus ? HIGH : LOW);
+    }
+  }
+}
+
+//Blink DELTA
+void blinkDELTA()
+{
+  unsigned long currentMillis = millis();
+  if (currentMillis - previousBlinkDeltaMillis >= 600)
+  {
+    previousBlinkDeltaMillis = currentMillis;
+    if((totalsectime >= 0 && totalsectime <= 15)) {
+      digitalWrite(PIN_RED_LED, HIGH);
+    } else {
+      deltaStatus = !deltaStatus;
+      digitalWrite(PIN_RED_LED, deltaStatus ? HIGH : LOW);
+    }
+  }  
+}
+
+//Blink ZETA
+void blinkZETA()
+{
+  unsigned long currentMillis = millis();
+  if (currentMillis - previousBlinkZetaMillis >= 200)
+  {
+    previousBlinkZetaMillis = currentMillis;
+    if((totalsectime >= 35 && totalsectime <= 59)) {
+      digitalWrite(PIN_GREEN_LED, HIGH);
+    } else {  
+      zetaStatus = !zetaStatus;
+      digitalWrite(PIN_GREEN_LED, zetaStatus ? HIGH : LOW);
     }
   }
 }
@@ -204,70 +267,147 @@ void blinkRedColumnsLeds()
 //Blink TAU, DELTA, ZETA leds
 void blinkTDZ()
 {
+  blinkTAU();
+  blinkDELTA();
+  blinkZETA();
+}
+
+//Blink modification when in edit mode
+void blinkEditMode()
+{
   unsigned long currentMillis = millis();
-  if (currentMillis - previousBlinkMillis >= BLINK_TDZ_INTERVAL)
+  if (currentMillis - previousBlinkEditModeMillis >= previousBlinkEditModeInterval)
   {
-    previousBlinkMillis = currentMillis;
-
-    // Blink green led
-    digitalWrite(PIN_GREEN_LED, HIGH);
-    delay(BLINK_DELAY);
-    digitalWrite(PIN_GREEN_LED, LOW);
-
-    // Blink red led
-    digitalWrite(PIN_RED_LED, HIGH);
-    delay(BLINK_DELAY);
-    digitalWrite(PIN_RED_LED, LOW);
-
-    // Blink yellow led
-    digitalWrite(PIN_YELLOW_LED, HIGH);
-    delay(BLINK_DELAY);
-    digitalWrite(PIN_YELLOW_LED, LOW);
+    previousBlinkEditModeMillis = currentMillis;
+    if (editMode) {
+      if (editModeCurrent == 4)
+      {
+        int days = totalsectime / 86400;
+        if (editModeBlinkStatus)
+        {
+          lc.setRow(1, 2, B00000000); // Turn off the display
+          lc.setRow(1, 3, B00000000); // Turn off the display
+          lc.setRow(1, 4, B00000000); // Turn off the display
+        }
+        else
+        {
+          lc.setDigit(1, 2, days / 100, false);
+          lc.setDigit(1, 3, (days / 10) % 10, false);
+          lc.setDigit(1, 4, days % 10, false); 
+        }
+      }
+      if (editModeCurrent == 3)
+      {
+        int hours = (totalsectime % 86400) / 3600;
+        if (editModeBlinkStatus)
+        {
+          lc.setRow(0, 0, B00000000);
+          lc.setRow(0, 1, B00000000);
+        }
+        else
+        {
+          lc.setDigit(0, 0, hours / 10, false);
+          lc.setDigit(0, 1, hours % 10, false);   
+        }
+      }
+      if (editModeCurrent == 2)
+      {
+        int minutes = (totalsectime % 3600) / 60;
+        if (editModeBlinkStatus)
+        {
+          lc.setRow(0, 2, B00000000);
+          lc.setRow(0, 3, B00000000);
+        }
+        else
+        {
+          lc.setDigit(0, 2, minutes / 10, false);
+          lc.setDigit(0, 3, minutes % 10, false);    
+        }
+      }
+      if (editModeCurrent == 1)
+      {
+        int seconds = totalsectime % 60;
+        if (editModeBlinkStatus)
+        {
+          lc.setRow(0, 4, B00000000);
+          lc.setRow(0, 5, B00000000);
+        }
+        else
+        {
+          lc.setDigit(0, 4, seconds / 10, false);
+          lc.setDigit(0, 5, seconds % 10, false);     
+        }
+      }
+      // Toggle the blinking status
+      editModeBlinkStatus = !editModeBlinkStatus;
+    }
   }
 }
 
+//Refresh timer
 void refreshTimer()
 {
-  int days = totalsectime / 86400;
-  int hours = (totalsectime % 86400) / 3600; // Calculate hours from the remaining seconds after days
-  int minutes = (totalsectime % 3600) / 60;    // Calculate minutes from the remaining seconds after hours
-  int seconds = totalsectime % 60;             // Calculate seconds from the remaining seconds
-
-  days = min(days, 999);
-
-  // Update DDD display
-  lc.setDigit(1, 2, days / 100, false);
-  lc.setDigit(1, 3, (days / 10) % 10, false);
-  lc.setDigit(1, 4, days % 10, false);
-
-  // Update the HHMMSS display
-  lc.setDigit(0, 0, hours / 10, false); // Display tens digit of hours
-  lc.setDigit(0, 1, hours % 10, false); // Display ones digit of hours
-  lc.setDigit(0, 2, minutes / 10, false); // Display tens digit of minutes
-  lc.setDigit(0, 3, minutes % 10, false); // Display ones digit of minutes
-  lc.setDigit(0, 4, seconds / 10, false); // Display tens digit of seconds
-  lc.setDigit(0, 5, seconds % 10, false); // Display ones digit of seconds
+    //Serial.println("Refresh timer...");
+    int days = totalsectime / 86400;
+    int hours = (totalsectime % 86400) / 3600;// Calculate hours from the remaining seconds after days
+    int minutes = (totalsectime % 3600) / 60; // Calculate minutes from the remaining seconds after hours
+    int seconds = totalsectime % 60; // Calculate seconds from the remaining seconds
+  
+    days = min(days, 999);
+  
+    // Update DDD display
+    if(editMode && editModeCurrent == 4)
+    {
+      Serial.println("Days are edited");
+    } else {
+      lc.setDigit(1, 2, days / 100, false);
+      lc.setDigit(1, 3, (days / 10) % 10, false);
+      lc.setDigit(1, 4, days % 10, false);   
+    }
+    // Update the HHMMSS display
+    if(editMode && editModeCurrent == 3)
+    {
+      Serial.println("Hours are edited");
+    } else {
+     lc.setDigit(0, 0, hours / 10, false); // Display tens digit of hours
+     lc.setDigit(0, 1, hours % 10, false); // Display ones digit of hours     
+    }
+    if(editMode && editModeCurrent == 2)
+    {
+      Serial.println("Minutes are edited");
+    } else {
+      lc.setDigit(0, 2, minutes / 10, false); // Display tens digit of minutes
+      lc.setDigit(0, 3, minutes % 10, false); // Display ones digit of minutes      
+    }
+    if(editMode && editModeCurrent == 1)
+    {
+      Serial.println("Seconds are edited");
+    } else {
+      lc.setDigit(0, 4, seconds / 10, false); // Display tens digit of seconds
+      lc.setDigit(0, 5, seconds % 10, false); // Display ones digit of seconds    
+    }
 }
 
+//Timer management
 void timer(bool editMode = false)
 {
-  if(!editMode)
+  unsigned long currentMillis = millis();
+  // Update the timer every second
+  if (currentMillis - previousTimerMillis >= 1000)
   {
-    Serial.println("decrease");
-    // Update the timer every second
-    if (millis() - previousTimerMillis >= 1000)
+    previousTimerMillis = currentMillis;
+    if(!editMode)
     {
-      previousTimerMillis = millis();
       if (totalsectime > 0) {
         totalsectime--; // Decrease the timer value by 1 second if it's greater than 0
         isTimerOn = true;
       }
       else {
         isTimerOn = false;
-      }
+      }  
     }
   }
-  
+
   refreshTimer();
 
   if(editMode)
@@ -275,13 +415,6 @@ void timer(bool editMode = false)
     return;
   }
   
-  //Slide mode x min before timer end
-  /*
-  if(totalsectime <= 15)
-  {
-    activateSlideMode();
-  }*/
-
   if(totalsectime <= 0)
   {
     if(!countdownEndTriggered)
@@ -299,55 +432,31 @@ void timer(bool editMode = false)
   }
 }
 
+//Bargraph management
 void bargraph()
 {
-  static byte pattern = B10000000; // Initial pattern
   unsigned long currentMillis = millis();
+
   if (currentMillis - previousBarGraphMillis >= BARGRAPH_INTERVAL)
   {
     previousBarGraphMillis = currentMillis;
-    lc.setRow(1, 0, pattern); // Set the current 
-    lc.setRow(1, 1, pattern); // Set the current pattern
-    pattern = pattern << 1 | (pattern & B10000000 ? 1 : 0); // Shift the pattern to the left, maintaining the last bit
-  }
-}
 
-void bargraphDisplay(int mark) {
-    unsigned long currentMillis = millis();
-    if (currentMillis - previousBarGraphMillis >= BARGRAPH_INTERVAL)
-    {
-      if (mark < 0 || mark > 8) return; // Sanity check, cannot be more than max or less than 0 LEDs
-      byte LEDBit=B11111111;
-     if (mark <=8) { // First row (first 8 LEDs)
-        LEDBit=LEDBit << (8-mark); // Shift bits to the left
-        lc.setRow(1,0,LEDBit);  //Light up LEDs
-        lc.setRow(1,1,LEDBit); // Blank out second row
-      }
-      else { // Second row (LED 9-10)
-       LEDBit=LEDBit << (16-mark); // Shift bits to the left. 16 is 8*row
-       lc.setRow(1,0,LEDBit);  //Light first 8 LEDs
-       lc.setRow(1,1,LEDBit); 
-      }
-  }
-}
+    // Display the current pattern from the array
+    byte pattern = bargraph_patterns[bargraphPatternIndex];
+    lc.setRow(1, 0, pattern); // Set the current pattern for row 0
+    lc.setRow(1, 1, pattern); // Set the current pattern for row 1
 
-void bargraphChasing() {
-  /*
-  unsigned long currentMillis = millis();
-  // Check if enough time has passed to update the LED
-  if (currentMillis - previousBarGraphMillis >= BARGRAPH_INTERVAL) {
-    previousBarGraphMillis = currentMillis;  // Update the last time we changed the LED*/
-    for (int i=0;i<10;i++) {
-      bargraphDisplay(i);      
+    // Update the patternIndex to cycle through the patterns
+    bargraphPatternIndex++;
+    if (bargraphPatternIndex >= BARGRAPH_NUM_PATTERNS) {
+      bargraphPatternIndex = 0; // Reset to the first pattern when the last one is reached
     }
-    for (int i=9;i>=0;i--) {
-      bargraphDisplay(i);      
-    }  
-  /*}*/
+  }
 }
 
-
-void buzzer() {
+//Buzzer startup management
+void buzzerStartup() {
+  Serial.println("Buzzer startup sequence...");
   tone(PIN_BUZZER, 5500, 150);
   delay(200);
   tone(PIN_BUZZER, 5500, 150);
@@ -394,8 +503,9 @@ void buzzer() {
   delay(250);
 }
 
-//GENSER SEQUENCE + bug baregraphe
+//Genser sequence + bug bargraph
 void genserOne() {
+  Serial.println("Genser and bug bargraph sequence...");
   //GEnSEr
   //G
   lc.setRow(0, 0, B01011110);
@@ -640,10 +750,15 @@ void genserOne() {
   refreshTimer();
 }
 
+//Click on button 1
 void clickBtn1Action()
 {
   Serial.println("clickBtn1Action");
   tone(PIN_BUZZER, 5500, 100);
+  if(isTimerOn)
+  {
+    return;
+  }
   if(editModeCurrent==1 && editModeSeconds <= 59)
   {
     editModeSeconds++;
@@ -669,10 +784,15 @@ void clickBtn1Action()
   timer(true);
 }
 
+//Click on button 4
 void clickBtn4Action()
 {
   Serial.println("clickBtn4Action");
   tone(PIN_BUZZER, 5500, 100);
+  if(isTimerOn)
+  {
+    return;
+  }
   if(editModeCurrent==1 && editModeSeconds > 0)
   {
     editModeSeconds--;
@@ -698,17 +818,26 @@ void clickBtn4Action()
   timer(true);
 }
 
+//Click on PWR button
 void clickBtnPowerAction()
 {
   Serial.println("clickBtnPowerAction");
   tone(PIN_BUZZER, 5500, 100);
+  if(isTimerOn)
+  {
+    return;
+  }
 }
 
+//Click on FCN button
 void clickBtnFCNAction()
 {
   Serial.println("clickBtnFCNAction");
   tone(PIN_BUZZER, 5500, 100);
-  
+  if(isTimerOn)
+  {
+    return;
+  }
   editMode = true;
   editModeCurrent++;
   Serial.println(editModeCurrent);
@@ -717,16 +846,22 @@ void clickBtnFCNAction()
   }
 }
 
+//Click on NAME button
 void clickBtnNameAction()
 {
   Serial.println("clickBtnNameAction");
   tone(PIN_BUZZER, 5500, 100);
 }
 
+//Click on END button
 void clickBtnEndAction()
 {
   Serial.println("clickBtnEndAction");
   tone(PIN_BUZZER, 5500, 100);
+  if(totalsectime == 0)
+  {
+    return;
+  }
   //Only working if not editing
   if(editModeCurrent==0)
   {
@@ -734,45 +869,49 @@ void clickBtnEndAction()
   }
   if(!editMode)
   {
-    Serial.println("not in edit mode");
+    Serial.println("Not in edit mode...");
+    if(!isTimerOn & !randomMode)
+    {
+      slideOpenVortex();
+    }
     if(isTimerOn & !randomMode)
     {
-      Serial.println("Enter in random mode");
+      Serial.println("Warning !!! Entering in random mode...");
       randomMode = true;
       totalsectime = 0;      
     }
     if(randomMode)
     {
-      Serial.println("Already in random mode");
+      Serial.println("Already in random mode :( Good luck to find your home dimension now...");
     }
-    slideOpenVortex();
   }
 }
 
+//Open vortex (not IRL :)) sequence
 void slideOpenVortex()
 {
   isTimerOn = false;
   activateRedColumnsLeds();
   activateSlideLights();
-  //15 seconds
-  delay(5000);
+  //Vortex in opened for 30 seconds
+  delay(30000);
   deactivateSlideLights();
-  Serial.println("Edit mode:");
-  Serial.println(editMode);  
 }
 
+//Set countdown
 void setCountDown(){
-  Serial.println("set countdown");
-  Serial.println(editModeSeconds);
-  Serial.println(editModeMinutes);
-  Serial.println(editModeHours);
-  Serial.println(editModeDays);
+  Serial.println("Set countdown...");
   totalsectime = editModeSeconds + (editModeMinutes*60) + (editModeHours*3600) + (editModeDays*3600*24);
+  Serial.println("Total time in seconds : " + totalsectime);
   countdownEndTriggered = false;
 }
 
+//Loop
 void loop()
 {
+  //Blink when in edit mode
+  blinkEditMode();
+  
   //Buttons clicks
   clickButton(BTN_1,clickBtn1Action);
   clickButton(BTN_2,clickBtn4Action);
@@ -785,41 +924,30 @@ void loop()
   while (firstLoop) {
     if(buzzerActivated)
     {
-      buzzer();
+      buzzerStartup();
     }
     genserOne();
     displayWrap();
     firstLoop = false;
     break;
   }
-  
-  //Occurs everytime a next loop is defined (new random loop)
-  /*
-  while (nextLoop) {
-    displayWrap(); 
-    nextLoop = false;
-    break;
-  }*/
-  
+
   //Occurs only when a countdown is defined (random or defined by a slider user)
   if(isTimerOn)
   {
     blinkRedColumnsLeds();
     bargraph();
-    //bargraphChasing();
     blinkTDZ();
-  }
-  else { //Timer off
+  } else {
     activateRedColumnsLeds();
   }
    
   timer(editMode);
-  
-  //powerLedRing();
-  //loopHHMMSS();
 }
 
+//Loop on HH MM SS
 void loopHHMMSS() {
+  Serial.println("Loop on HH:MM:SS...");
   lc.setRow(0, 0, B01000000);
   lc.setRow(0, 1, B00000000);
   lc.setRow(0, 2, B00000000);
@@ -1045,7 +1173,9 @@ void loopHHMMSS() {
   lc.setRow(0, 5, B00000000);
 }
 
+//Display wrap
 void displayWrap() {
+  Serial.println("Display wrap...");
   //INSERT DISPLAY WRAP
   delay(30);
   if(buzzerActivated)
@@ -1324,6 +1454,7 @@ void displayWrap() {
   refreshTimer();
 }
 
+//Click button : generic method to manage debounce, last button states
 void clickButton(int buttonPin, void (*action)()) {
   // Determine the index based on the button pin
   int index = buttonPin - BTN_1; // Assuming BTN_1 is the lowest pin number
