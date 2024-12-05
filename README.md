@@ -28,7 +28,7 @@ By being open source, I encourage collaboration, innovation, and transparency. Y
 > Feel free to fork this project for your own needs, or contribute directly by making a pull request :blush: :heart:
 
 ## Schematics
-![SVG Image](./04%20-%20schematics/00_proteus_timer_schematics.SVG)
+<img src="04 - schematics/timer_schematics.png" width="50%" height="50%"><br/>
 ## PCB
 > [!TIP]
 > By adhering to the PCB size and component placements, you will be able to upgrade or integrate your own PCB without making any changes to the 3D models.
@@ -66,7 +66,8 @@ Size : 137mm x 50mm
 ## 3D models
 ### Main body
 ### Battery box
-### Buttons plate
+### Bottom plate
+<img src="05 - images/3d models/Bottom plate.png"><br/>
 ### Top plate
 
 ## Sources
