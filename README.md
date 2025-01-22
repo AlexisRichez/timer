@@ -64,7 +64,9 @@ Size : 137mm x 50mm
 | Potentiometer 10k                                      | -           | -          | -           |
 
 ## 3D models
-You can preview a full 3 model of the timer here : https://3dviewer.net/#model=https://raw.githubusercontent.com/AlexisRichez/timer/main/03%20-%20fusion360/Timer.fbx
+Timer 3D model preview : https://3dviewer.net/#model=https://raw.githubusercontent.com/AlexisRichez/timer/main/03%20-%20fusion360/Timer.fbx<br/>
+PCB 3D model preview : https://3dviewer.net/#model=https://raw.githubusercontent.com/AlexisRichez/timer/main/01%20-%20proteus/pcb.3DS
+
 <div style="float:left">
 <img src="05 - images/3d models/Timer.png" width="150">
 <img src="05 - images/3d models/Main body.png" width="150">
