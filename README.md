@@ -64,6 +64,7 @@ Size : 137mm x 50mm
 | Potentiometer 10k                                      | -           | -          | -           |
 
 ## 3D models
+You can preview a full 3 model of the timer here : https://3dviewer.net/#model=https://raw.githubusercontent.com/AlexisRichez/timer/main/03%20-%20fusion360/Timer.fbx
 <div style="float:left">
 <img src="05 - images/3d models/Timer.png" width="150">
 <img src="05 - images/3d models/Main body.png" width="150">
@@ -71,8 +72,8 @@ Size : 137mm x 50mm
 <img src="05 - images/3d models/Bottom body.png" width="150">
 <img src="05 - images/3d models/Battery box.png" width="150">
 <img src="05 - images/3d models/Battery case.png" width="150">
-<img src="05 - images/3d models/Pcb front.png" width="150" height="320">
-<img src="05 - images/3d models/Pcb back.png" width="150" height="320">
+<img src="05 - images/3d models/Pcb front.png" width="75" height="160">
+<img src="05 - images/3d models/Pcb back.png" width="75" height="160">
 </div>
 <hr style="clear:both"/>
 
