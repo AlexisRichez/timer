@@ -64,11 +64,15 @@ Size : 137mm x 50mm
 | Potentiometer 10k                                      | -           | -          | -           |
 
 ## 3D models
-### Main body
-### Battery box
-### Bottom plate
-<img src="05 - images/3d models/Bottom plate.png"><br/>
-### Top plate
+<div style="float:left">
+<img src="05 - images/3d models/Timer.png" width="150">
+<img src="05 - images/3d models/Main body.png" width="150">
+<img src="05 - images/3d models/Top body.png" width="150">
+<img src="05 - images/3d models/Bottom body.png" width="150">
+<img src="05 - images/3d models/Battery box.png" width="150">
+<img src="05 - images/3d models/Battery case.png" width="150">
+</div>
+<hr style="clear:both"/>
 
 ## Sources
 + [https://www.therpf.com/forums/threads/how-to-build-sliders-timer-electronics.104308/](https://www.therpf.com/forums/threads/how-to-build-sliders-timer-electronics.104308/)
