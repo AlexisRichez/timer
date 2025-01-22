@@ -71,6 +71,8 @@ Size : 137mm x 50mm
 <img src="05 - images/3d models/Bottom body.png" width="150">
 <img src="05 - images/3d models/Battery box.png" width="150">
 <img src="05 - images/3d models/Battery case.png" width="150">
+<img src="05 - images/3d models/Pcb front.png" width="150" height="320">
+<img src="05 - images/3d models/Pcb back.png" width="150" height="320">
 </div>
 <hr style="clear:both"/>
 
