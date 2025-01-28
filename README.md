@@ -14,15 +14,12 @@ Sliders is a 1995 sci-fi television series :tv: that follows Quinn Mallory, a yo
 
 The "Timer" is a handheld device that controls the sliding process, dictating how long the group must stay in each universe before they can slide again. It opens a wormhole :cyclone: at set intervals, and if the group misses their window, they are stranded in the current universe. The Timer becomes central to the story, especially when it malfunctions or is damaged, leading to unpredictable slides or dangerous situations.
 
-### This is Open Source ! What does this mean for you?
+### This is Open Source !
 <b>Source Code:</b> You can download and modify the entire source code to suit your requirements. Whether you want to fix a bug, add new features, or create your own version, the choice is yours!
 
 <b>3D Models:</b> All 3D models I use are accessible and can be adjusted. If you want to tweak the designs or use them for your own projects, you are free to do so.
 
 <b>Vector Files:</b> Any vector graphic files I provide can also be edited. This includes things like logos, UI components, and other design assets that you can adapt for personal use.
-
-### Why Open Source?
-By being open source, I encourage collaboration, innovation, and transparency. You have the ability to contribute back to the project, improving it for everyone in the community. I believe this leads to better, faster development and a more inclusive project environment.
 
 > [!IMPORTANT]
 > Feel free to fork this project for your own needs, or contribute directly by making a pull request :blush: :heart:
@@ -30,9 +27,6 @@ By being open source, I encourage collaboration, innovation, and transparency. Y
 ## Schematics
 <img src="04 - schematics/timer_schematics.png" width="50%" height="50%"><br/>
 ## PCB
-> [!TIP]
-> By adhering to the PCB size and component placements, you will be able to upgrade or integrate your own PCB without making any changes to the 3D models.
-> 
 Size : 137mm x 50mm
 ## Hardware
 ### Bill of materials
