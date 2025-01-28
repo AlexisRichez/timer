@@ -78,7 +78,7 @@ PCB 3D model preview : https://3dviewer.net/#model=https://raw.githubusercontent
 + https://github.com/kenny-caldieraro/Sliders-timer-replica
 
 ## Remaining tasks
-[ ] Make a big party :tada:
+:tada: Issues and improvments are available here : https://github.com/AlexisRichez/timer/issues<br/>
 
 ## Pictures :camera:
 <div style="float:left">
