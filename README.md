@@ -6,7 +6,7 @@
 3. [PCB](#pcb)
 4. [Hardware](#hardware)
 5. [Sources](#sources)
-6. [Remaining tasks](#remaining-tasks]
+6. [Remaining tasks](#remaining-tasks)
 
 ## Introduction
 ### About the story...
