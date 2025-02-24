@@ -31,7 +31,7 @@ The "Timer" is a handheld device that controls the sliding process, dictating ho
 Size : 137mm x 50mm
 ## Power supply
 ### LiPo 3,7V 3000mAh 1S 1C
-
+https://www.amazon.fr/dp/B08V11Z88Q
 ### Wemos D1 Battery Shield
 https://www.wemos.cc/en/latest/d1_mini_shield/battery.html
 ## Hardware
