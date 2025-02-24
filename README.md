@@ -4,9 +4,10 @@
 1. [Introduction](#introduction)
 2. [Schematics](#schematics)
 3. [PCB](#pcb)
-4. [Hardware](#hardware)
-5. [Sources](#sources)
-6. [Remaining tasks](#remaining-tasks)
+4. [Power Supply](#power-supply)
+5. [Hardware](#hardware)
+6. [Sources](#sources)
+7. [Remaining tasks](#remaining-tasks)
 
 ## Introduction
 ### About the story...
