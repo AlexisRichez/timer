@@ -33,6 +33,8 @@ Size : 137mm x 50mm
 ### LiPo 3,7V 3000mAh 1S 1C
 https://www.amazon.fr/dp/B08V11Z88Q
 ### Wemos D1 Battery Shield
+The Wemos D1 Battery Shield is an expansion board designed for the Wemos D1 Mini series, allowing it to run on a lithium-ion (Li-Ion) or lithium-polymer (LiPo) battery. It features a TP4056 charging circuit for safe battery charging via micro-USB and includes a boost converter to provide a stable 5V output from the battery. Additionally, it has built-in overcharge and discharge protection to extend battery life and ensure safe operation. This shield is ideal for portable IoT projects, wireless sensor nodes, and other battery-powered applications.
+
 https://www.wemos.cc/en/latest/d1_mini_shield/battery.html
 ## Hardware
 ### Bill of materials
