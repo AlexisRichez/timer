@@ -28,6 +28,7 @@ The "Timer" is a handheld device that controls the sliding process, dictating ho
 <img src="04 - schematics/timer_schematics.png" width="50%" height="50%"><br/>
 ## PCB
 Size : 137mm x 50mm
+## Power supply
 ## Hardware
 ### Bill of materials
 | Component                                             | Link |
