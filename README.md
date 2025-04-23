@@ -26,7 +26,7 @@ The "Timer" is a handheld device that controls the sliding process, dictating ho
 > Feel free to fork this project for your own needs, or contribute directly by making a pull request :blush: :heart:
 
 ## Schematics
-<img src="04 - schematics/timer_schematics.png" width="50%" height="50%"><br/>
+<img src="05 - schematics/timer_schematics.png" width="50%" height="50%"><br/>
 ## PCB
 Size : 137mm x 50mm
 ## Power supply
@@ -72,14 +72,14 @@ Timer 3D model preview : https://3dviewer.net/#model=https://raw.githubuserconte
 PCB 3D model preview : https://3dviewer.net/#model=https://raw.githubusercontent.com/AlexisRichez/timer/main/01%20-%20proteus/pcb.3DS
 
 <div style="float:left">
-<img src="05 - images/3d models/Timer.png" width="150">
-<img src="05 - images/3d models/Main body.png" width="150">
-<img src="05 - images/3d models/Top body.png" width="150">
-<img src="05 - images/3d models/Bottom body.png" width="150">
-<img src="05 - images/3d models/Battery box.png" width="150">
-<img src="05 - images/3d models/Battery case.png" width="150">
-<img src="05 - images/3d models/Pcb front.png" width="75" height="160">
-<img src="05 - images/3d models/Pcb back.png" width="75" height="160">
+<img src="06 - images/3d models/Timer.png" width="150">
+<img src="06 - images/3d models/Main body.png" width="150">
+<img src="06 - images/3d models/Top body.png" width="150">
+<img src="06 - images/3d models/Bottom body.png" width="150">
+<img src="06 - images/3d models/Battery box.png" width="150">
+<img src="06 - images/3d models/Battery case.png" width="150">
+<img src="06 - images/3d models/Pcb front.png" width="75" height="160">
+<img src="06 - images/3d models/Pcb back.png" width="75" height="160">
 </div>
 <hr style="clear:both"/>
 
@@ -92,22 +92,22 @@ PCB 3D model preview : https://3dviewer.net/#model=https://raw.githubusercontent
 
 ## Pictures :camera:
 <div style="float:left">
-<img src="05 - images/001.jpg" width="150" height="150">
-<img src="05 - images/002.jpg" width="150" height="150">
-<img src="05 - images/003.jpg" width="150" height="150">
-<img src="05 - images/004.jpg" width="150" height="150">
-<img src="05 - images/005.jpg" width="150" height="150">
-<img src="05 - images/010.jpg" width="150" height="150">
-<img src="05 - images/011.jpg" width="150" height="150">
-<img src="05 - images/020.jpg" width="150" height="150">
-<img src="05 - images/021.jpg" width="150" height="150">
-<img src="05 - images/022.jpg" width="150" height="150">
-<img src="05 - images/030.jpg" width="150" height="150">
-<img src="05 - images/031.jpg" width="150" height="150">
-<img src="05 - images/032.jpg" width="150" height="150">
-<img src="05 - images/033.jpg" width="150" height="150">
-<img src="05 - images/034.jpg" width="150" height="150">
-<img src="05 - images/035.jpg" width="150" height="150">
-<img src="05 - images/040.jpg" width="150" height="150">
-<img src="05 - images/041.jpg" width="150" height="150">
+<img src="06 - images/001.jpg" width="150" height="150">
+<img src="06 - images/002.jpg" width="150" height="150">
+<img src="06 - images/003.jpg" width="150" height="150">
+<img src="06 - images/004.jpg" width="150" height="150">
+<img src="06 - images/005.jpg" width="150" height="150">
+<img src="06 - images/010.jpg" width="150" height="150">
+<img src="06 - images/011.jpg" width="150" height="150">
+<img src="06 - images/020.jpg" width="150" height="150">
+<img src="06 - images/021.jpg" width="150" height="150">
+<img src="06 - images/022.jpg" width="150" height="150">
+<img src="06 - images/030.jpg" width="150" height="150">
+<img src="06 - images/031.jpg" width="150" height="150">
+<img src="06 - images/032.jpg" width="150" height="150">
+<img src="06 - images/033.jpg" width="150" height="150">
+<img src="06 - images/034.jpg" width="150" height="150">
+<img src="06 - images/035.jpg" width="150" height="150">
+<img src="06 - images/040.jpg" width="150" height="150">
+<img src="06 - images/041.jpg" width="150" height="150">
 </div>
