@@ -100,6 +100,9 @@ PCB 3D model preview : https://3dviewer.net/#model=https://raw.githubusercontent
 + [https://www.therpf.com/forums/threads/how-to-build-sliders-timer-electronics.104308/](https://www.therpf.com/forums/threads/how-to-build-sliders-timer-electronics.104308/)
 + https://github.com/kenny-caldieraro/Sliders-timer-replica
 
+## Thingiverse
+STL files are available on Thingiverse : https://www.thingiverse.com/thing:7009968
+
 ## Remaining tasks
 :tada: Issues and improvments are available here : https://github.com/AlexisRichez/timer/issues<br/>
 
