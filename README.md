@@ -35,7 +35,7 @@ https://www.amazon.fr/dp/B08V11Z88Q
 ### Wemos D1 Battery Shield
 The Wemos D1 Battery Shield is an expansion board designed for the Wemos D1 Mini series, allowing it to run on a lithium-ion (Li-Ion) or lithium-polymer (LiPo) battery. It features a TP4056 charging circuit for safe battery charging via micro-USB and includes a boost converter to provide a stable 5V output from the battery. Additionally, it has built-in overcharge and discharge protection to extend battery life and ensure safe operation. This shield is ideal for portable IoT projects, wireless sensor nodes, and other battery-powered applications.
 
-<img src="https://www.wemos.cc/en/latest/_static/d1_shields/battery_v1.3.0_1_16x16.jpg" width="15%" height="15%"><br/>
+<img src="06 - images/references/battery_shield.jpg" width="15%" height="15%"><br/>
 
 https://www.wemos.cc/en/latest/d1_mini_shield/battery.html
 ## Hardware
@@ -66,6 +66,15 @@ https://www.wemos.cc/en/latest/d1_mini_shield/battery.html
 | Yellow, red, green LEDs (TAU, DELTA, ZETA)             | 5.00        | 2.00       | 7.00        |
 | Red LEDs (between HH:MM:SS)                            | 3.00        | 2.00       | 4.00        |
 | Potentiometer 10k                                      | -           | -          | -           |
+
+## Assembly tips
+The holes are designed for use with M2 or M3 inserts. Depending on the 3D printing technology used, the hole dimensions may need to be adjusted to ensure a precise fit:
+
+- For filament prints :<br/>
+<img src="06 - images/references/M3_inserts.jpg" width="150">
+
+- For resin prints :<br/>
+<img src="06 - images/references/M3_inserts_resin.jpg" width="150">
 
 ## 3D models
 Timer 3D model preview : https://3dviewer.net/#model=https://raw.githubusercontent.com/AlexisRichez/timer/main/03%20-%20fusion360/Timer.fbx<br/>
