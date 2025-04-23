@@ -67,7 +67,8 @@ https://www.wemos.cc/en/latest/d1_mini_shield/battery.html
 | Red LEDs (between HH:MM:SS)                            | 3.00        | 2.00       | 4.00        |
 | Potentiometer 10k                                      | -           | -          | -           |
 
-## Assembly tips
+## Assembly & Finishing Tips
+### Holes
 The holes are designed for use with M2 or M3 inserts. Depending on the 3D printing technology used, the hole dimensions may need to be adjusted to ensure a precise fit:
 
 - For filament prints :<br/>
@@ -75,6 +76,9 @@ The holes are designed for use with M2 or M3 inserts. Depending on the 3D printi
 
 - For resin prints :<br/>
 <img src="06 - images/references/M3_inserts_resin.jpg" width="150">
+
+### Buttons
+For best results, print the buttons in white using a resin printer. After printing, spray them with black paint, then lightly sand the top surface — the text will become clearly visible. You can finish by applying a coat of varnish for protection and a polished look.
 
 ## 3D models
 Timer 3D model preview : https://3dviewer.net/#model=https://raw.githubusercontent.com/AlexisRichez/timer/main/03%20-%20fusion360/Timer.fbx<br/>
